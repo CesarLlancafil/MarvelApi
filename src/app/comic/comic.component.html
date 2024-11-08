@@ -1,0 +1,15 @@
+<div>
+    <h2>Marvel Characters</h2>
+    <app-character
+      [characters]="characters"
+      (characterSelected)="onCharacterSelected($event)"
+    ></app-character>
+  
+    <div *ngIf="selectedCharacterId">
+      <h3>Comics of Selected Character:</h3>
+      <ul>
+        <li *ngFor="let comic of comics">{{ comic.title }}</li>
+      </ul>
+    </div>
+</div>
+  
