@@ -4,6 +4,12 @@
       [characters]="characters"
       (characterSelected)="onCharacterSelected($event)"
     ></app-character>
+
+    <mat-paginator [length]="totalCharacters"
+               [pageSize]="limit"
+               [pageSizeOptions]="[20]"
+               (page)="onPageChange($event)">
+    </mat-paginator>
   
     <div *ngIf="selectedCharacterId">
       <h3>Comics del personaje seleccionado:</h3>
@@ -19,6 +25,12 @@
           </mat-card>
         </mat-grid-tile>
     </mat-grid-list>
+
+    <mat-paginator #comicsPaginator [length]="totalComics"
+                 [pageSize]="limitComics"
+                 [pageSizeOptions]="[10]"
+                 (page)="onComicsPageChange($event)">
+    </mat-paginator>
     </div>
 </div>
   

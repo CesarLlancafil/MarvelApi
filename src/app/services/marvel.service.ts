@@ -15,15 +15,20 @@ export class MarvelService {
     return `ts=${timestamp}&apikey=${environment.marvelPublicKey}&hash=${hash}`;
   }
 
-  getCharacters() {
+  getCharacters(limit: number = 20, offset: number = 0) {
     return this.http.get(
-      `${environment.marvelBaseUrl}/characters?${this.getAuthParams()}`
+      `${environment.marvelBaseUrl}/characters?${this.getAuthParams()}&limit=${limit}&offset=${offset}`
     );
   }
 
-  getComics(characterId: number) {
+  // getComics(characterId: number) {
+  //   return this.http.get(
+  //     `${environment.marvelBaseUrl}/characters/${characterId}/comics?${this.getAuthParams()}`
+  //   );
+  // }
+  getComics(characterId: number, limit: number, offset: number) {
     return this.http.get(
-      `${environment.marvelBaseUrl}/characters/${characterId}/comics?${this.getAuthParams()}`
+      `${environment.marvelBaseUrl}/characters/${characterId}/comics?${this.getAuthParams()}&limit=${limit}&offset=${offset}`
     );
   }
 }
