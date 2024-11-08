@@ -9,6 +9,7 @@ import { MarvelService } from '../services/marvel.service';
 export class ComicComponent implements OnInit {
   characters: any[] = [];
   selectedCharacterId: number | null = null;
+  selectedCharacterName: string | null = null;
   comics: any[] = [];
 
   constructor(private marvelService: MarvelService) {}
@@ -19,9 +20,10 @@ export class ComicComponent implements OnInit {
     });
   }
 
-  onCharacterSelected(characterId: number) {
-    this.selectedCharacterId = characterId;
-    this.marvelService.getComics(characterId).subscribe((data: any) => {
+  onCharacterSelected(character: { id: number, name: string }) {
+    this.selectedCharacterId = character.id;
+    this.selectedCharacterName = character.name;
+    this.marvelService.getComics(this.selectedCharacterId).subscribe((data: any) => {
       this.comics = data.data.results;
     });
   }

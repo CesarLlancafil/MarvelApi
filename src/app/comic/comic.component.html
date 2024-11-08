@@ -1,15 +1,24 @@
 <div>
-    <h2>Marvel Characters</h2>
+    <h2>Personajes de Marvel</h2>
     <app-character
       [characters]="characters"
       (characterSelected)="onCharacterSelected($event)"
     ></app-character>
   
     <div *ngIf="selectedCharacterId">
-      <h3>Comics of Selected Character:</h3>
-      <ul>
-        <li *ngFor="let comic of comics">{{ comic.title }}</li>
-      </ul>
+      <h3>Comics del personaje seleccionado:</h3>
+      <h3>{{selectedCharacterName}}</h3>
+
+      <mat-grid-list cols="5" rowHeight="250px" gutterSize="16px">
+        <mat-grid-tile *ngFor="let comic of comics">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>{{ comic.title }}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-sm-image [src]="comic.thumbnail.path + '.' + comic.thumbnail.extension" alt="">
+          </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
     </div>
 </div>
   

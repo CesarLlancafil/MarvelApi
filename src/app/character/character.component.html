@@ -1,6 +1,21 @@
-<ul>
-    <li *ngFor="let character of characters" (click)="selectCharacter(character.id)">
+<!-- <ul>
+    <li *ngFor="let character of characters">
       {{ character.name }}
+      <button mat-button (click)="selectCharacter(character.id)">Ver comics</button>
     </li>
-</ul>
+</ul> -->
+
+<mat-grid-list cols="10" rowHeight="250px" gutterSize="16px">
+    <mat-grid-tile *ngFor="let character of characters">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ character.name }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-sm-image [src]="character.thumbnail.path + '.' + character.thumbnail.extension" alt="">
+        <mat-card-actions>
+          <button mat-button (click)="selectCharacter(character)">Ver comics</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
   

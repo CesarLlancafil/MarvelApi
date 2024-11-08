@@ -7,9 +7,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class CharacterComponent {
   @Input() characters: any[] = [];
-  @Output() characterSelected = new EventEmitter<number>();
+  @Output() characterSelected = new EventEmitter<{ id: number, name: string }>();
 
-  selectCharacter(characterId: number) {
-    this.characterSelected.emit(characterId);
+  selectCharacter(character: any) {
+    this.characterSelected.emit({ id: character.id, name: character.name });
   }
 }
